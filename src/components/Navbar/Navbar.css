@@ -64,3 +64,8 @@ width: 35px;
 .navbar-profile:hover .dropdown{
     display: block;
 }
+
+/* navbar dark color */
+.nav-dark{
+    background: #141414;
+}

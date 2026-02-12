@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./TitleCards.css";
 import cards_data from "../../assets/cards/Cards_data";
+import { Link } from "react-router-dom";
 
 const TitleCards = ({ title, category }) => {
   const [apidata, setAipData] = useState([]); //Karan data ha Api Formate made Yenar ahe tyamule emty Array ghetla
@@ -16,13 +17,7 @@ const TitleCards = ({ title, category }) => {
     },
   };
 
-  // fetch(
-  //   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-  //   options,
-  // )
-  //   .then((res) => res.json())
-  //   .then((res) => console.log(res))
-  //   .catch((err) => console.error(err));
+
 
   const handleWheel = (event) => {
     event.preventDefault();
@@ -46,10 +41,10 @@ const TitleCards = ({ title, category }) => {
       <div className="card-list" ref={cardsRef}>
         {apidata.map((cards, index) => {
           return (
-            <div className="cards" key={index}>
+            <Link to={`/player/${cards.id}`} className="cards" key={index}>
               <img src={`https://image.tmdb.org/t/p/w500`+cards.backdrop_path} alt="" />
               <p>{cards.original_title}</p>
-            </div>
+            </Link>
           );
         })}
       </div>

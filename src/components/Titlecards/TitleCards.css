@@ -21,3 +21,9 @@ margin-bottom: 8px;
 .card-list .cards{
     position: relative;
 }
+.card-list .cards p{
+    position: absolute;
+    bottom: 10px;
+   left: 10px;
+    
+}

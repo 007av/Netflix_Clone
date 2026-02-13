@@ -2,11 +2,15 @@
 import "./Login.css";
 import logo from "../../assets/logo.png"
 import { useState } from "react";
+import { login , singup } from "../../firebase";
 
 
 const Login = () => {
 
-const [singInState , setSingInSate] = useState("Sing In")
+const [singInState , setSingInSate] = useState("Sing In");
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
 
   return (
     <div className='login'>

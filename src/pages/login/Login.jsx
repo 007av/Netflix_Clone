@@ -3,6 +3,7 @@ import "./Login.css";
 import logo from "../../assets/logo.png"
 import { useState } from "react";
 import { login , singup } from "../../firebase";
+import netflix_spinner from "../../assets/netflix_spinner.gif"
 
 
 const Login = () => {
@@ -11,18 +12,24 @@ const [singInState , setSingInSate] = useState("Sing In");
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+const [loading, setLoding] = useState(false);
 
 const user_auth = async (event)=>{
   event.preventDefault();
+  setLoding(true);
   if(singInState==="Sing In"){
     await login(email, password)
   }else{
     await singup(name, email, password);
   }
+  setLoding(false);
 }
 
   return (
-    <div className='login'>
+  loading?<div className="loading-spinner">
+    <img src={netflix_spinner} alt="" />
+</div>:
+  <div className='login'>
       <img src={logo} className="login-logo" alt="" />
       <div className="login-form">
         <h1>{singInState}</h1>

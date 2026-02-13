@@ -5,6 +5,7 @@ import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
 import caret from "../../assets/caret_icon.svg";
 import { useEffect, useRef } from "react";
+import { logout } from "../../firebase";
 
 
 
@@ -46,7 +47,7 @@ useEffect(()=>{
           <img src={profile_img} alt="" className="profile" />
           <img src={caret} alt="" className="icons" />
           <div className="dropdown">
-            <p>Sing out of Netflix</p>
+            <p onClick={()=>{logout()}}>Sing out of Netflix</p>
           </div>
         </div>
 

@@ -12,6 +12,15 @@ const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
+const user_auth = async (event)=>{
+  event.preventDefault();
+  if(singInState==="Sing In"){
+    await login(email, password)
+  }else{
+    await singup(name, email, password);
+  }
+}
+
   return (
     <div className='login'>
       <img src={logo} className="login-logo" alt="" />
@@ -19,12 +28,13 @@ const [password, setPassword] = useState("");
         <h1>{singInState}</h1>
         <form>
           {
-            singInState === 'Sing Up'? <input type="text" placeholder="Enter your Name" /> : <></>
+            singInState === 'Sing Up'?
+            <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} placeholder="Enter your Name" /> : <></>
           }
           
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Enter your password" />
-          <button>{singInState}</button>
+          <input type="email" value={email} onChange={(e)=>{setEmail(e.target.value)}} placeholder="Email" />
+          <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder="Enter your password" />
+          <button onClick={user_auth} type="submit" >{singInState}</button>
           <div className="form-help">
             <div className="remamber">
               <input type="checkbox" />
